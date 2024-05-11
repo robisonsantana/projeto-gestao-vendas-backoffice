@@ -48,5 +48,19 @@ Este projeto consiste na implementação de um sistema de Backoffice para uma em
    - Prepare um documento descrevendo a arquitetura do sistema, as decisões de design e as principais funcionalidades.
    - Faça a entrega do projeto conforme as instruções do seu curso ou professor.
 
+## Tarefas da semana
+**Robison:**
+   - Implementação de interfaces.
+   - Implementação dos models.
+
+**Brenda:**
+   - Montar pacote de leitura de CSV.
+
+**Anthony:**
+   - Implementação dos métodos da classe CadastroController.
+
+**Celline:**
+   - Implementação de telas de cadastro.
+
 ## Links Úteis
    [Documento do Projeto](https://drive.google.com/file/d/1HoB3tZRhxH5-TlB1KALZTOq1OcZcuttU/view)
