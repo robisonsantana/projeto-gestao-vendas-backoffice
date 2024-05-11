@@ -1,9 +1,17 @@
 package model;
 
 public class Cliente {
-
-	public Cliente() {
-		// TODO Auto-generated constructor stub
+	
+	public int id;
+	public String nome;
+	public Cliente(int id, String nome) {
+		this.id = id;
+		this.nome = nome;
 	}
-
+	@Override
+	public String toString() {
+		return "ID: " + id 
+		   + "\nNome: " + nome;
+	}
+	
 }
