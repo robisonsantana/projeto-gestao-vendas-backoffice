@@ -48,7 +48,7 @@ Este projeto consiste na implementação de um sistema de Backoffice para uma em
    - Prepare um documento descrevendo a arquitetura do sistema, as decisões de design e as principais funcionalidades.
    - Faça a entrega do projeto conforme as instruções do seu curso ou professor.
 
-## Tarefas da semana
+## Tarefas da semana 1
 **Robison:**
    - Implementação de interfaces.
    - Implementação dos models.
