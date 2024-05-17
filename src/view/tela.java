@@ -12,6 +12,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import javax.swing.JList;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.AbstractListModel;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class tela extends JFrame {
 
@@ -32,6 +39,11 @@ public class tela extends JFrame {
 	private JTextField tfCepPJ;
 	private JTextField tfNumeroPortaPJ;
 	private JTextField tfComplementoPJ;
+	private JTextField tfNomeProduto;
+	private JTextField tfProdutoID;
+	private JTextField tfValorProduto;
+	private JTextField tfQuantidadeProduto;
+	private JTextField tfNomeTipoProduto;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -273,11 +285,117 @@ public class tela extends JFrame {
 		btnConsultarClientePJ.setBounds(348, 317, 160, 36);
 		tabClientesPJ.add(btnConsultarClientePJ);
 		
-		JTabbedPane tabTipoProdutos = new JTabbedPane(JTabbedPane.TOP);
-		tabTipoProdutos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tabbedPane.addTab("Tipos de Produtos", null, tabTipoProdutos, "Cadastrar os tipos dos produtos");
+		JPanel tabProdutos = new JPanel();
+		tabbedPane.addTab("Produtos", null, tabProdutos, "Cadastro de Produtos");
+		tabProdutos.setLayout(null);
 		
-		JTabbedPane tabProdutos = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("Produtos", null, tabProdutos, "Cadastrar os produtos");
+		JLabel lblNomeProduto = new JLabel("Nome");
+		lblNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNomeProduto.setBounds(147, 79, 77, 30);
+		tabProdutos.add(lblNomeProduto);
+		
+		tfNomeProduto = new JTextField();
+		tfNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfNomeProduto.setBounds(203, 77, 149, 36);
+		tabProdutos.add(tfNomeProduto);
+		tfNomeProduto.setColumns(10);
+		
+		JLabel lblProdutoID = new JLabel("Código ID");
+		lblProdutoID.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblProdutoID.setBounds(128, 123, 77, 30);
+		tabProdutos.add(lblProdutoID);
+		
+		tfProdutoID = new JTextField();
+		tfProdutoID.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfProdutoID.setBounds(203, 121, 149, 36);
+		tabProdutos.add(tfProdutoID);
+		tfProdutoID.setColumns(10);
+		
+		JLabel lblValorProduto = new JLabel("Valor");
+		lblValorProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblValorProduto.setBounds(158, 167, 77, 30);
+		tabProdutos.add(lblValorProduto);
+		
+		tfValorProduto = new JTextField();
+		tfValorProduto.setBounds(203, 167, 149, 36);
+		tabProdutos.add(tfValorProduto);
+		tfValorProduto.setColumns(10);
+		
+		JLabel lblQuantidadeProduto = new JLabel("Quantidade em estoque");
+		lblQuantidadeProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblQuantidadeProduto.setBounds(41, 213, 164, 36);
+		tabProdutos.add(lblQuantidadeProduto);
+		
+		tfQuantidadeProduto = new JTextField();
+		tfQuantidadeProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfQuantidadeProduto.setBounds(203, 214, 149, 36);
+		tabProdutos.add(tfQuantidadeProduto);
+		tfQuantidadeProduto.setColumns(10);
+		
+		JLabel lblDescricaoProduto = new JLabel("Descrição do produto");
+		lblDescricaoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDescricaoProduto.setBounds(52, 260, 183, 30);
+		tabProdutos.add(lblDescricaoProduto);
+		
+		JTextArea taDescricaoProduto = new JTextArea();
+		taDescricaoProduto.setFont(new Font("Monospaced", Font.PLAIN, 14));
+		taDescricaoProduto.setBounds(203, 265, 342, 98);
+		tabProdutos.add(taDescricaoProduto);
+		
+		JButton btnCadastrarProduto = new JButton("Cadastrar");
+		btnCadastrarProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadastrarProduto.setBounds(381, 79, 164, 74);
+		tabProdutos.add(btnCadastrarProduto);
+		
+		JButton btnConsultarProduto = new JButton("Consultar");
+		btnConsultarProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConsultarProduto.setBounds(381, 167, 164, 74);
+		tabProdutos.add(btnConsultarProduto);
+		
+		JLabel lblTipoProduto = new JLabel("Tipo");
+		lblTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblTipoProduto.setBounds(158, 36, 77, 30);
+		tabProdutos.add(lblTipoProduto);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Selecionar", "Produtos ao consumidor", "Produtos industriais", "Bens de conveniência", "Bens de impulso", "Bens de emergência", "Bens de compra comparada", "Bens de especialidade", "Bens perecíveis", "Bens duráveis ", "Bens não-duráveis", "Bens de capital", "Partes e materiais", "Abastecimento e serviços ", "Commodities", "Produtos intermediários"}));
+		comboBox.setBounds(203, 33, 342, 36);
+		tabProdutos.add(comboBox);
+		
+		JPanel tabTiposProdutos = new JPanel();
+		tabbedPane.addTab("Tipos de Produtos", null, tabTiposProdutos, "Cadastrar Tipo de Produto");
+		tabTiposProdutos.setLayout(null);
+		
+		JLabel lblNomeTipoProduto = new JLabel("Nome");
+		lblNomeTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNomeTipoProduto.setBounds(71, 34, 89, 34);
+		tabTiposProdutos.add(lblNomeTipoProduto);
+		
+		tfNomeTipoProduto = new JTextField();
+		tfNomeTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfNomeTipoProduto.setBounds(139, 34, 420, 36);
+		tabTiposProdutos.add(tfNomeTipoProduto);
+		tfNomeTipoProduto.setColumns(10);
+		
+		JLabel lblDescricaoTipo = new JLabel("Descrição");
+		lblDescricaoTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDescricaoTipo.setBounds(45, 99, 101, 34);
+		tabTiposProdutos.add(lblDescricaoTipo);
+		
+		JTextArea taDescricaoTipo = new JTextArea();
+		taDescricaoTipo.setFont(new Font("Monospaced", Font.PLAIN, 14));
+		taDescricaoTipo.setBounds(139, 105, 420, 196);
+		tabTiposProdutos.add(taDescricaoTipo);
+		
+		JButton btnCadastrarTipo = new JButton("Cadastrar");
+		btnCadastrarTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadastrarTipo.setBounds(139, 327, 198, 36);
+		tabTiposProdutos.add(btnCadastrarTipo);
+		
+		JButton btnConsultarTipo = new JButton("Consultar");
+		btnConsultarTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConsultarTipo.setBounds(361, 327, 198, 36);
+		tabTiposProdutos.add(btnConsultarTipo);
 	}
 }
