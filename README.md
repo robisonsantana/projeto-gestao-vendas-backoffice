@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Projeto Semestral - Estrutura de Dados
 
 ## Descrição do Projeto
