@@ -5,6 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+<<<<<<< HEAD
+=======
+
+import controller.CadastroProdutoController;
+
+>>>>>>> bec4a6c (Brenda: Adicionado models necessários e o controller de produtos)
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -397,5 +403,16 @@ public class tela extends JFrame {
 		btnConsultarTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConsultarTipo.setBounds(361, 327, 198, 36);
 		tabTiposProdutos.add(btnConsultarTipo);
+<<<<<<< HEAD
 	}
+=======
+		
+		
+		//adicionando funcionalidade dos botoes dos controllers
+		CadastroProdutoController cadastropCont= new CadastroProdutoController(tfNomeProduto, tfNomeTipoProduto, tfProdutoID, tfQuantidadeProduto, tfValorProduto);
+		btnCadastrarProduto.addActionListener(cadastropCont);
+	}
+	
+	
+>>>>>>> bec4a6c (Brenda: Adicionado models necessários e o controller de produtos)
 }
