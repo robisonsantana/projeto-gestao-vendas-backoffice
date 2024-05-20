@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.CadastroClienteJController;
+import controller.CadastroClientesController;
 import controller.CadastroProdutoController;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
@@ -401,8 +404,15 @@ public class tela extends JFrame {
 
 		
 		//adicionando funcionalidade dos botoes dos controllers
-		CadastroProdutoController cadastropCont= new CadastroProdutoController(tfNomeProduto, tfNomeTipoProduto, tfProdutoID, tfQuantidadeProduto, tfValorProduto);
+		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto );
 		btnCadastrarProduto.addActionListener(cadastropCont);
+		
+		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF);
+		btnCadastrarClientePF.addActionListener(cadastrocCont);
+		
+		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ);
+		btnCadastrarClientePJ.addActionListener(cadastrocjCont);
+		
 	}
 		
 }

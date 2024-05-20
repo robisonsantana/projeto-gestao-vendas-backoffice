@@ -31,7 +31,6 @@ public class CadastroProdutoController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		String cmd = e.getActionCommand();
 		//ao clicar no botao Cadastrar produto, redirecionar ao botao "cadastrar produto"
 		if (cmd.equals("Cadastrar")) {
