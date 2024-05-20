@@ -15,7 +15,6 @@ public class CadastroProdutoController implements ActionListener {
 	private JTextField tfValorProduto;
 	private JTextField tfQuantidadeProduto;
 	private JTextField tfNomeTipoProduto;
-	private JTextComponent taDescricaoTipo;
 	
 	
 	//construtor
