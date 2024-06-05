@@ -1,15 +1,15 @@
 package model;
 
 public class Produto {
-	
-	public int id;
+
+	public String id;
 	public String nome;
-	public int valor;
+	public String valor;
 	public String descricao;
-	public int quantidadeEmEstoque;
+	public String quantidadeEmEstoque;
 	public String tipo;
 	
-	public Produto(int id, String nome, int valor, String descricao, int quantidadeEmEstoque, String tipo) {
+	public Produto() {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -21,12 +21,7 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "ID: " + id 
-		   + "\nNome: " + nome 
-		   + "\nValor: " + valor
-		   + "\nDescrição: " + descricao
-		   + "\nQuantidade em estoque: " + quantidadeEmEstoque
-		   + "\nTipo: " + tipo;
+		return id + ";" + nome + ";" + valor + ";" + descricao + ";" + quantidadeEmEstoque + ";" + tipo;
 	}
 	
 }

@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.CadastroClienteJController;
+import controller.CadastroClientesController;
+import controller.CadastroProdutoController;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -44,6 +48,10 @@ public class tela extends JFrame {
 	private JTextField tfValorProduto;
 	private JTextField tfQuantidadeProduto;
 	private JTextField tfNomeTipoProduto;
+	private JTextField tfConsultaClientePF;
+	private JTextField tfConsultaClientePJ;
+	private JTextField tfConsultaProduto;
+	private JTextField tfConsultaTipoProduto;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -155,13 +163,8 @@ public class tela extends JFrame {
 		
 		JButton btnCadastrarClientePF = new JButton("Cadastrar");
 		btnCadastrarClientePF.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCadastrarClientePF.setBounds(139, 317, 160, 36);
+		btnCadastrarClientePF.setBounds(173, 317, 249, 36);
 		tabClientesPF.add(btnCadastrarClientePF);
-		
-		JButton btnConsultarClientePF = new JButton("Consultar");
-		btnConsultarClientePF.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarClientePF.setBounds(348, 317, 160, 36);
-		tabClientesPF.add(btnConsultarClientePF);
 		
 		JLabel lblDadosClientePF = new JLabel("Dados Pessoais");
 		lblDadosClientePF.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -277,21 +280,16 @@ public class tela extends JFrame {
 		
 		JButton btnCadastrarClientePJ = new JButton("Cadastrar");
 		btnCadastrarClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCadastrarClientePJ.setBounds(139, 317, 160, 36);
+		btnCadastrarClientePJ.setBounds(173, 317, 249, 36);
 		tabClientesPJ.add(btnCadastrarClientePJ);
-		
-		JButton btnConsultarClientePJ = new JButton("Consultar");
-		btnConsultarClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarClientePJ.setBounds(348, 317, 160, 36);
-		tabClientesPJ.add(btnConsultarClientePJ);
 		
 		JPanel tabProdutos = new JPanel();
 		tabbedPane.addTab("Produtos", null, tabProdutos, "Cadastro de Produtos");
 		tabProdutos.setLayout(null);
 		
 		JLabel lblNomeProduto = new JLabel("Nome");
-		lblNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNomeProduto.setBounds(147, 79, 77, 30);
+		lblNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNomeProduto.setBounds(149, 79, 103, 30);
 		tabProdutos.add(lblNomeProduto);
 		
 		tfNomeProduto = new JTextField();
@@ -344,13 +342,8 @@ public class tela extends JFrame {
 		
 		JButton btnCadastrarProduto = new JButton("Cadastrar");
 		btnCadastrarProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCadastrarProduto.setBounds(381, 79, 164, 74);
+		btnCadastrarProduto.setBounds(381, 175, 164, 74);
 		tabProdutos.add(btnCadastrarProduto);
-		
-		JButton btnConsultarProduto = new JButton("Consultar");
-		btnConsultarProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarProduto.setBounds(381, 167, 164, 74);
-		tabProdutos.add(btnConsultarProduto);
 		
 		JLabel lblTipoProduto = new JLabel("Tipo");
 		lblTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -364,7 +357,7 @@ public class tela extends JFrame {
 		tabProdutos.add(comboBox);
 		
 		JPanel tabTiposProdutos = new JPanel();
-		tabbedPane.addTab("Tipos de Produtos", null, tabTiposProdutos, "Cadastrar Tipo de Produto");
+		tabbedPane.addTab("Tipos de Produtos", null, tabTiposProdutos, "Cadastro de Tipo de Produto");
 		tabTiposProdutos.setLayout(null);
 		
 		JLabel lblNomeTipoProduto = new JLabel("Nome");
@@ -390,12 +383,97 @@ public class tela extends JFrame {
 		
 		JButton btnCadastrarTipo = new JButton("Cadastrar");
 		btnCadastrarTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCadastrarTipo.setBounds(139, 327, 198, 36);
+		btnCadastrarTipo.setBounds(139, 327, 420, 36);
 		tabTiposProdutos.add(btnCadastrarTipo);
+
 		
-		JButton btnConsultarTipo = new JButton("Consultar");
-		btnConsultarTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarTipo.setBounds(361, 327, 198, 36);
-		tabTiposProdutos.add(btnConsultarTipo);
+		//adicionando funcionalidade dos botoes dos controllers
+		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto );
+		btnCadastrarProduto.addActionListener(cadastropCont);
+		
+		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF);
+		btnCadastrarClientePF.addActionListener(cadastrocCont);
+		
+		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ);
+		
+		JPanel tabConsulta = new JPanel();
+		tabbedPane.addTab("Consulta", null, tabConsulta, "Consultar clientes, produtos e tipos de produtos");
+		tabConsulta.setLayout(null);
+		
+		JLabel lblConsultar = new JLabel("Consultar");
+		lblConsultar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblConsultar.setBounds(252, 10, 84, 49);
+		tabConsulta.add(lblConsultar);
+		
+		JLabel lblConsultaClientePF = new JLabel("Cliente Pessoa Física (digite o CPF)");
+		lblConsultaClientePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblConsultaClientePF.setBounds(40, 95, 238, 37);
+		tabConsulta.add(lblConsultaClientePF);
+		
+		JLabel lblConsultaClientePJ = new JLabel("Cliente Pessoa Jurídica (digite o CNPJ)");
+		lblConsultaClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblConsultaClientePJ.setBounds(12, 163, 251, 37);
+		tabConsulta.add(lblConsultaClientePJ);
+		
+		JLabel lblConsultaProduto = new JLabel("Produto (digite o ID)");
+		lblConsultaProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblConsultaProduto.setBounds(124, 230, 218, 37);
+		tabConsulta.add(lblConsultaProduto);
+		
+		JLabel lblConsultaTipoProduto = new JLabel("Tipo de produto (digite o nome)");
+		lblConsultaTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblConsultaTipoProduto.setBounds(57, 295, 251, 37);
+		tabConsulta.add(lblConsultaTipoProduto);
+		
+		tfConsultaClientePF = new JTextField();
+		tfConsultaClientePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfConsultaClientePF.setBounds(269, 95, 162, 37);
+		tabConsulta.add(tfConsultaClientePF);
+		tfConsultaClientePF.setColumns(10);
+		
+		tfConsultaClientePJ = new JTextField();
+		tfConsultaClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfConsultaClientePJ.setBounds(269, 163, 162, 37);
+		tabConsulta.add(tfConsultaClientePJ);
+		tfConsultaClientePJ.setColumns(10);
+		
+		tfConsultaProduto = new JTextField();
+		tfConsultaProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfConsultaProduto.setBounds(269, 230, 162, 37);
+		tabConsulta.add(tfConsultaProduto);
+		tfConsultaProduto.setColumns(10);
+		
+		tfConsultaTipoProduto = new JTextField();
+		tfConsultaTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfConsultaTipoProduto.setBounds(269, 295, 162, 37);
+		tabConsulta.add(tfConsultaTipoProduto);
+		tfConsultaTipoProduto.setColumns(10);
+		
+		JButton btnConsultarClientePF = new JButton("Consultar\r\n");
+		btnConsultarClientePF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnConsultarClientePF.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConsultarClientePF.setBounds(441, 95, 134, 36);
+		tabConsulta.add(btnConsultarClientePF);
+		
+		JButton btnConsultarClientePJ = new JButton("Consultar");
+		btnConsultarClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConsultarClientePJ.setBounds(441, 163, 134, 37);
+		tabConsulta.add(btnConsultarClientePJ);
+		
+		JButton btnConsultarProduto = new JButton("Consultar");
+		btnConsultarProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConsultarProduto.setBounds(441, 230, 134, 37);
+		tabConsulta.add(btnConsultarProduto);
+		
+		JButton btnConsultarTipoProduto = new JButton("Consultar");
+		btnConsultarTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnConsultarTipoProduto.setBounds(441, 295, 134, 37);
+		tabConsulta.add(btnConsultarTipoProduto);
+		btnCadastrarClientePJ.addActionListener(cadastrocjCont);
+		
 	}
 }
+
