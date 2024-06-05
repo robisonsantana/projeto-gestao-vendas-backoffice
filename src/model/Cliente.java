@@ -3,9 +3,8 @@ package model;
 public class Cliente {
 	
 	//dados do formulario do cliente normal
-	public String id;
-	public String nome;
 	public String cpf;
+	public String nome;
 	public String telefone;
 	public String cep;
 	public String logradouro;
@@ -15,9 +14,8 @@ public class Cliente {
 	//construtor
 	public Cliente() {
 		super();
-		this.id = id;
-		this.nome = nome;
 		this.cpf = cpf;
+		this.nome = nome;
 		this.telefone = telefone;
 		this.cep = cep;
 		this.logradouro = logradouro;
@@ -28,7 +26,7 @@ public class Cliente {
 	
 	@Override
 	public String toString(){
-		return "Cliente [id = " + id + ", nome = " + nome + ", cpf = " + cpf + ", telefone = " + telefone + ", cep = " + cep +", logradouro = " + logradouro + ", numero da porta = " + numeroPorta + ", complemento =" + complemento + "]";
+		return cpf + ";" + nome + ";" + telefone + ";" + cep + ";" + logradouro + ";" + numeroPorta + ";" + complemento;
 	}
 
 	

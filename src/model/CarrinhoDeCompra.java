@@ -17,10 +17,7 @@ public class CarrinhoDeCompra {
 
 	@Override
 	public String toString() {
-		return "Produto: " + produto
-		   + "\nQuantidade: " + quantidade
-		   + "\nData: " + data
-		   + "\nHora: " + hora;
+		return produto + ";" + quantidade + ";" + data + ";" + hora;
 	}
 	
 }

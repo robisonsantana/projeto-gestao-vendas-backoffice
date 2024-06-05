@@ -21,12 +21,7 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "ID: " + id 
-		   + "\nNome: " + nome 
-		   + "\nValor: " + valor
-		   + "\nDescrição: " + descricao
-		   + "\nQuantidade em estoque: " + quantidadeEmEstoque
-		   + "\nTipo: " + tipo;
+		return id + ";" + nome + ";" + valor + ";" + descricao + ";" + quantidadeEmEstoque + ";" + tipo;
 	}
 	
 }

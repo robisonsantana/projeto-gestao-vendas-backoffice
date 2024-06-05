@@ -3,9 +3,8 @@ package model;
 public class ClienteJuridico {
 	
 	//dados do formulario do cliente pessoa juridica
-	public String id;
-	public String nome;
 	public String cnpj;
+	public String nome;
 	public String telefone;
 	public String email;
 	public String logradouro;
@@ -16,9 +15,8 @@ public class ClienteJuridico {
 	//construtor
 	public ClienteJuridico() {
 		super();
-		this.id = id;
-		this.nome = nome;
 		this.cnpj = cnpj;
+		this.nome = nome;
 		this.telefone = telefone;
 		this.email = email;
 		this.logradouro = logradouro;
@@ -30,7 +28,7 @@ public class ClienteJuridico {
 	
 	@Override
 	public String toString(){
-		return "Cliente [id = " + id + ", nome = " + nome + ", cnpj = " + cnpj + ", telefone = " + telefone + " logradouro = " + logradouro + ", cep = " + cep + ", numeroPorta = " + numeroPorta + ", complemento = " + complemento +"]";
+		return cnpj + ";" + nome + ";" + telefone + ";" + logradouro + ";" + cep + ";" + numeroPorta + ";" + complemento;
 	}
 
 		
