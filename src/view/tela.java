@@ -23,6 +23,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextPane;
 
 public class tela extends JFrame {
 
@@ -402,50 +403,50 @@ public class tela extends JFrame {
 		
 		JLabel lblConsultar = new JLabel("Consultar");
 		lblConsultar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblConsultar.setBounds(252, 10, 84, 49);
+		lblConsultar.setBounds(258, 0, 84, 49);
 		tabConsulta.add(lblConsultar);
 		
 		JLabel lblConsultaClientePF = new JLabel("Cliente Pessoa Física (digite o CPF)");
 		lblConsultaClientePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblConsultaClientePF.setBounds(40, 95, 238, 37);
+		lblConsultaClientePF.setBounds(38, 55, 238, 37);
 		tabConsulta.add(lblConsultaClientePF);
 		
 		JLabel lblConsultaClientePJ = new JLabel("Cliente Pessoa Jurídica (digite o CNPJ)");
 		lblConsultaClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblConsultaClientePJ.setBounds(12, 163, 251, 37);
+		lblConsultaClientePJ.setBounds(10, 102, 251, 37);
 		tabConsulta.add(lblConsultaClientePJ);
 		
 		JLabel lblConsultaProduto = new JLabel("Produto (digite o ID)");
 		lblConsultaProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblConsultaProduto.setBounds(124, 230, 218, 37);
+		lblConsultaProduto.setBounds(115, 149, 218, 37);
 		tabConsulta.add(lblConsultaProduto);
 		
 		JLabel lblConsultaTipoProduto = new JLabel("Tipo de produto (digite o nome)");
 		lblConsultaTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblConsultaTipoProduto.setBounds(57, 295, 251, 37);
+		lblConsultaTipoProduto.setBounds(51, 196, 251, 37);
 		tabConsulta.add(lblConsultaTipoProduto);
 		
 		tfConsultaClientePF = new JTextField();
 		tfConsultaClientePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfConsultaClientePF.setBounds(269, 95, 162, 37);
+		tfConsultaClientePF.setBounds(268, 55, 162, 37);
 		tabConsulta.add(tfConsultaClientePF);
 		tfConsultaClientePF.setColumns(10);
 		
 		tfConsultaClientePJ = new JTextField();
 		tfConsultaClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfConsultaClientePJ.setBounds(269, 163, 162, 37);
+		tfConsultaClientePJ.setBounds(268, 102, 162, 37);
 		tabConsulta.add(tfConsultaClientePJ);
 		tfConsultaClientePJ.setColumns(10);
 		
 		tfConsultaProduto = new JTextField();
 		tfConsultaProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfConsultaProduto.setBounds(269, 230, 162, 37);
+		tfConsultaProduto.setBounds(268, 149, 162, 37);
 		tabConsulta.add(tfConsultaProduto);
 		tfConsultaProduto.setColumns(10);
 		
 		tfConsultaTipoProduto = new JTextField();
 		tfConsultaTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfConsultaTipoProduto.setBounds(269, 295, 162, 37);
+		tfConsultaTipoProduto.setBounds(268, 196, 162, 37);
 		tabConsulta.add(tfConsultaTipoProduto);
 		tfConsultaTipoProduto.setColumns(10);
 		
@@ -455,23 +456,32 @@ public class tela extends JFrame {
 			}
 		});
 		btnConsultarClientePF.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarClientePF.setBounds(441, 95, 134, 36);
+		btnConsultarClientePF.setBounds(440, 55, 134, 36);
 		tabConsulta.add(btnConsultarClientePF);
 		
 		JButton btnConsultarClientePJ = new JButton("Consultar");
 		btnConsultarClientePJ.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarClientePJ.setBounds(441, 163, 134, 37);
+		btnConsultarClientePJ.setBounds(440, 102, 134, 37);
 		tabConsulta.add(btnConsultarClientePJ);
 		
 		JButton btnConsultarProduto = new JButton("Consultar");
 		btnConsultarProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarProduto.setBounds(441, 230, 134, 37);
+		btnConsultarProduto.setBounds(440, 149, 134, 37);
 		tabConsulta.add(btnConsultarProduto);
 		
 		JButton btnConsultarTipoProduto = new JButton("Consultar");
+		btnConsultarTipoProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnConsultarTipoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConsultarTipoProduto.setBounds(441, 295, 134, 37);
+		btnConsultarTipoProduto.setBounds(440, 196, 134, 37);
 		tabConsulta.add(btnConsultarTipoProduto);
+		
+		JLabel lblExibeConsulta = new JLabel("");
+		lblExibeConsulta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblExibeConsulta.setBounds(10, 243, 564, 143);
+		tabConsulta.add(lblExibeConsulta);
 		btnCadastrarClientePJ.addActionListener(cadastrocjCont);
 		
 	}
