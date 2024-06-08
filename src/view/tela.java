@@ -55,6 +55,7 @@ public class tela extends JFrame {
 	private JTextField tfConsultaProduto;
 	private JTextField tfConsultaTipoProduto;
 	private JLabel lblExibeConsulta;
+	private JLabel lblExibeErroCadastro_1;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -481,11 +482,11 @@ public class tela extends JFrame {
 				
 		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF);
 		
-		JLabel lblExibeConsulta_1 = new JLabel();
-		lblExibeConsulta_1.setForeground(new Color(255, 0, 0));
-		lblExibeConsulta_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblExibeConsulta_1.setBounds(27, 0, 564, 57);
-		tabClientesPF.add(lblExibeConsulta_1);
+		JLabel lblExibeErroCadastro_1 = new JLabel();
+		lblExibeErroCadastro_1.setForeground(new Color(255, 0, 0));
+		lblExibeErroCadastro_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblExibeErroCadastro_1.setBounds(27, 0, 564, 57);
+		tabClientesPF.add(lblExibeErroCadastro_1);
 		btnCadastrarClientePF.addActionListener(cadastrocCont);
 				
 		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ, tfConsultaClientePJ, lblExibeConsulta);
