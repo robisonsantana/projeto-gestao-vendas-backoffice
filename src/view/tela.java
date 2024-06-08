@@ -387,16 +387,6 @@ public class tela extends JFrame {
 		btnCadastrarTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCadastrarTipo.setBounds(139, 327, 420, 36);
 		tabTiposProdutos.add(btnCadastrarTipo);
-
-		
-		//adicionando funcionalidade dos botoes dos controllers
-		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto );
-		btnCadastrarProduto.addActionListener(cadastropCont);
-		
-		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF);
-		btnCadastrarClientePF.addActionListener(cadastrocCont);
-		
-		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ);
 		
 		JPanel tabConsulta = new JPanel();
 		tabbedPane.addTab("Consulta", null, tabConsulta, "Consultar clientes, produtos e tipos de produtos");
@@ -483,7 +473,17 @@ public class tela extends JFrame {
 		lblExibeConsulta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblExibeConsulta.setBounds(10, 243, 564, 143);
 		tabConsulta.add(lblExibeConsulta);
+		
+		//adicionando funcionalidade dos botoes dos controllers
+		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto );
+		btnCadastrarProduto.addActionListener(cadastropCont);
+				
+		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF);
+		btnCadastrarClientePF.addActionListener(cadastrocCont);
+				
+		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ, tfConsultaClientePJ, lblExibeConsulta);
 		btnCadastrarClientePJ.addActionListener(cadastrocjCont);
+		btnConsultarClientePJ.addActionListener(cadastrocjCont);
 		
 	}
 }

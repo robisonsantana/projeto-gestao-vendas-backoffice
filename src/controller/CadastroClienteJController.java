@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import model.Cliente;
@@ -27,11 +28,13 @@ public class CadastroClienteJController implements ActionListener{
 	private JTextField tfCepPJ;
 	private JTextField tfNumeroPortaPJ;
 	private JTextField tfComplementoPJ;
+	private JTextField tfConsultaClientePJ;
+	private JLabel lblExibeConsulta;
 	
 	//construtor
 	public CadastroClienteJController(JTextField tfClienteNomePJ, JTextField tfCnpjPJ, JTextField tfTelefonePJ,
 			JTextField tfEmail, JTextField tfLogradouroPJ, JTextField tfCepPJ, JTextField tfNumeroPortaPJ,
-			JTextField tfComplementoPJ) {
+			JTextField tfComplementoPJ, JTextField tfConsultaClientePJ, JLabel lblExibeConsulta) {
 		super();
 		this.tfClienteNomePJ = tfClienteNomePJ;
 		this.tfCnpjPJ = tfCnpjPJ;
@@ -41,6 +44,8 @@ public class CadastroClienteJController implements ActionListener{
 		this.tfCepPJ = tfCepPJ;
 		this.tfNumeroPortaPJ = tfNumeroPortaPJ;
 		this.tfComplementoPJ = tfComplementoPJ;
+		this.tfConsultaClientePJ =  tfConsultaClientePJ;
+		this.lblExibeConsulta = lblExibeConsulta;
 	}
 
 	@Override
@@ -55,6 +60,12 @@ public class CadastroClienteJController implements ActionListener{
 			} catch (IOException e1) {
 				System.err.println(e1.getMessage());
 			}
+		} else if(cmd.equals("Consultar")) {
+			try {
+				buscar();
+			} catch (IOException e1) {
+				System.err.println(e1.getMessage());
+			}
 		}
 	}
 	
@@ -64,14 +75,25 @@ public class CadastroClienteJController implements ActionListener{
 		//instancia
 		ClienteJuridico cj = new ClienteJuridico();
 
-		cj.cnpj = tfCnpjPJ.getText();
-		cj.telefone = tfTelefonePJ.getText();
-		cj.cep = tfCepPJ.getText();
-		cj.nome = tfClienteNomePJ.getText();
-		cj.logradouro = tfLogradouroPJ.getText();
-		cj.numeroPorta = tfNumeroPortaPJ.getText();
-		cj.complemento = tfComplementoPJ.getText();
-		cj.email = tfEmail.getText();
+		int controller = 0;
+		while(controller != 9) {
+			cj.cnpj = tfCnpjPJ.getText();
+			cj.telefone = tfTelefonePJ.getText();
+			cj.cep = tfCepPJ.getText();
+			cj.nome = tfClienteNomePJ.getText();
+			cj.logradouro = tfLogradouroPJ.getText();
+			cj.numeroPorta = tfNumeroPortaPJ.getText();
+			cj.complemento = tfComplementoPJ.getText();
+			cj.email = tfEmail.getText();
+			if(cj.cnpj.equals(null) || cj.cep.equals(null) || cj.email.equals(null) || cj.logradouro.equals(null) || cj.nome.equals(null) || cj.numeroPorta.equals(null)) {
+				//mensagem de erro
+			} else if(cj.complemento.equals(null)) {
+				cj.complemento = " ";
+			} else {
+				controller = 9;
+			}
+			
+		}
 		
 		System.out.println(cj);
 		gravarDados(cj.toString());
@@ -106,15 +128,18 @@ public class CadastroClienteJController implements ActionListener{
 	
 	private void buscar() throws IOException {
 		ClienteJuridico cj = new ClienteJuridico();
-		cj.cnpj = tfCnpjPJ.getText();
-		cj = buscarProduto(cj);
+		cj.cnpj = tfConsultaClientePJ.getText();
+		cj = buscarCliente(cj);
+		System.out.println(cj.cnpj);
 		//implementar
 		if(cj.nome != null) {
-			//aqui
+			lblExibeConsulta.setText("CNPJ: " + cj.cnpj + "; Nome: " + cj.nome);
+		} else {
+			lblExibeConsulta.setText("Cliente não encontrado!");
 		}
 	}
 
-	private ClienteJuridico buscarProduto(ClienteJuridico cj) throws IOException {
+	private ClienteJuridico buscarCliente(ClienteJuridico cj) throws IOException {
 		String path = System.getProperty("user.home") + File.separator + "SistemaCadastro";
 		File arq = new File(path, "clientePJ.csv");
 		if(arq.exists() && arq.isFile()) {
