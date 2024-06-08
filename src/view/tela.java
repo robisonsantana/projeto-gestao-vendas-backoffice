@@ -24,6 +24,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextPane;
+import java.awt.Color;
 
 public class tela extends JFrame {
 
@@ -86,80 +87,80 @@ public class tela extends JFrame {
 		tabbedPane.addTab("Cliente Pessoa Física", null, tabClientesPF, "Cadastro de clientes PF (Pessoa Física)");
 		tabClientesPF.setLayout(null);
 		
-		JLabel lblClienteNomePF = new JLabel("Nome");
+		JLabel lblClienteNomePF = new JLabel("Nome*");
 		lblClienteNomePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblClienteNomePF.setBounds(69, 86, 54, 25);
+		lblClienteNomePF.setBounds(69, 118, 54, 25);
 		tabClientesPF.add(lblClienteNomePF);
 		
-		JLabel lblCpf = new JLabel("CPF");
+		JLabel lblCpf = new JLabel("CPF*");
 		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCpf.setBounds(79, 130, 35, 25);
+		lblCpf.setBounds(79, 162, 35, 25);
 		tabClientesPF.add(lblCpf);
 		
-		JLabel lblTelefonePF = new JLabel("Telefone");
+		JLabel lblTelefonePF = new JLabel("Telefone*");
 		lblTelefonePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTelefonePF.setBounds(54, 176, 60, 25);
+		lblTelefonePF.setBounds(46, 208, 68, 25);
 		tabClientesPF.add(lblTelefonePF);
 		
-		JLabel lblCepPF = new JLabel("CEP");
+		JLabel lblCepPF = new JLabel("CEP*");
 		lblCepPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCepPF.setBounds(380, 86, 42, 25);
+		lblCepPF.setBounds(380, 118, 42, 25);
 		tabClientesPF.add(lblCepPF);
 		
 		tfClienteNomePF = new JTextField();
 		tfClienteNomePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfClienteNomePF.setBounds(123, 81, 149, 36);
+		tfClienteNomePF.setBounds(123, 113, 149, 36);
 		tabClientesPF.add(tfClienteNomePF);
 		tfClienteNomePF.setColumns(10);
 		
 		tfCpfPF = new JTextField();
 		tfCpfPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfCpfPF.setBounds(123, 125, 149, 36);
+		tfCpfPF.setBounds(123, 157, 149, 36);
 		tabClientesPF.add(tfCpfPF);
 		tfCpfPF.setColumns(10);
 		
 		tfTelefonePF = new JTextField();
 		tfTelefonePF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfTelefonePF.setBounds(123, 171, 149, 36);
+		tfTelefonePF.setBounds(123, 203, 149, 36);
 		tabClientesPF.add(tfTelefonePF);
 		tfTelefonePF.setColumns(10);
 		
 		tfCepPF = new JTextField();
 		tfCepPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfCepPF.setBounds(419, 81, 149, 36);
+		tfCepPF.setBounds(419, 113, 149, 36);
 		tabClientesPF.add(tfCepPF);
 		tfCepPF.setColumns(10);
 		
-		JLabel lblLogradouroPF = new JLabel("Logradouro");
+		JLabel lblLogradouroPF = new JLabel("Logradouro*");
 		lblLogradouroPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblLogradouroPF.setBounds(335, 130, 120, 24);
+		lblLogradouroPF.setBounds(335, 162, 120, 24);
 		tabClientesPF.add(lblLogradouroPF);
 		
 		tfLogradouroPF = new JTextField();
 		tfLogradouroPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfLogradouroPF.setBounds(419, 125, 149, 36);
+		tfLogradouroPF.setBounds(419, 157, 149, 36);
 		tabClientesPF.add(tfLogradouroPF);
 		tfLogradouroPF.setColumns(10);
 		
-		JLabel lblNumeroPortaPF = new JLabel("Número da Porta");
+		JLabel lblNumeroPortaPF = new JLabel("Número da Porta*");
 		lblNumeroPortaPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNumeroPortaPF.setBounds(302, 176, 120, 25);
+		lblNumeroPortaPF.setBounds(302, 208, 120, 25);
 		tabClientesPF.add(lblNumeroPortaPF);
 		
 		tfNumeroPortaPF = new JTextField();
 		tfNumeroPortaPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfNumeroPortaPF.setBounds(419, 171, 149, 36);
+		tfNumeroPortaPF.setBounds(419, 203, 149, 36);
 		tabClientesPF.add(tfNumeroPortaPF);
 		tfNumeroPortaPF.setColumns(10);
 		
 		JLabel lblComplementoPF = new JLabel("Complemento");
 		lblComplementoPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblComplementoPF.setBounds(321, 222, 106, 25);
+		lblComplementoPF.setBounds(321, 254, 106, 25);
 		tabClientesPF.add(lblComplementoPF);
 		
 		tfComplementoPF = new JTextField();
 		tfComplementoPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfComplementoPF.setBounds(419, 217, 149, 36);
+		tfComplementoPF.setBounds(419, 249, 149, 36);
 		tabClientesPF.add(tfComplementoPF);
 		tfComplementoPF.setColumns(10);
 		
@@ -170,12 +171,12 @@ public class tela extends JFrame {
 		
 		JLabel lblDadosClientePF = new JLabel("Dados Pessoais");
 		lblDadosClientePF.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDadosClientePF.setBounds(123, 36, 149, 25);
+		lblDadosClientePF.setBounds(123, 68, 149, 25);
 		tabClientesPF.add(lblDadosClientePF);
 		
 		JLabel lblEnderecoPF = new JLabel("Endereço");
 		lblEnderecoPF.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblEnderecoPF.setBounds(419, 31, 101, 34);
+		lblEnderecoPF.setBounds(419, 63, 101, 34);
 		tabClientesPF.add(lblEnderecoPF);
 		
 		JPanel tabClientesPJ = new JPanel();
@@ -479,6 +480,12 @@ public class tela extends JFrame {
 		btnCadastrarProduto.addActionListener(cadastropCont);
 				
 		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF);
+		
+		JLabel lblExibeConsulta_1 = new JLabel();
+		lblExibeConsulta_1.setForeground(new Color(255, 0, 0));
+		lblExibeConsulta_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblExibeConsulta_1.setBounds(27, 0, 564, 57);
+		tabClientesPF.add(lblExibeConsulta_1);
 		btnCadastrarClientePF.addActionListener(cadastrocCont);
 				
 		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ, tfConsultaClientePJ, lblExibeConsulta);
