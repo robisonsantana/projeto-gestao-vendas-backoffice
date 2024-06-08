@@ -53,7 +53,7 @@ public class tela extends JFrame {
 	private JTextField tfConsultaClientePJ;
 	private JTextField tfConsultaProduto;
 	private JTextField tfConsultaTipoProduto;
-	JLabel lblExibeConsulta = new JLabel("");
+	private JLabel lblExibeConsulta;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -479,7 +479,7 @@ public class tela extends JFrame {
 		btnConsultarTipoProduto.setBounds(440, 196, 134, 37);
 		tabConsulta.add(btnConsultarTipoProduto);
 		
-
+		lblExibeConsulta = new JLabel();
 		lblExibeConsulta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblExibeConsulta.setBounds(10, 243, 564, 143);
 		tabConsulta.add(lblExibeConsulta);
