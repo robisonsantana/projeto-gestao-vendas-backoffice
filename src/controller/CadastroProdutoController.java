@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
@@ -23,17 +24,18 @@ public class CadastroProdutoController implements ActionListener {
 	private JTextField tfValorProduto;
 	private JTextField tfQuantidadeProduto;
 	private JTextField tfNomeTipoProduto;
-	
+	private JLabel lblExibeConsulta;
 	
 	//construtor
 	public CadastroProdutoController(JTextField tfNomeProduto, JTextField tfProdutoID, JTextField tfValorProduto,
-			JTextField tfQuantidadeProduto, JTextField tfNomeTipoProduto) {
+			JTextField tfQuantidadeProduto, JTextField tfNomeTipoProduto, JLabel lblExibeConsulta) {
 		super();
 		this.tfNomeProduto = tfNomeProduto;
 		this.tfProdutoID = tfProdutoID;
 		this.tfValorProduto = tfValorProduto;
 		this.tfQuantidadeProduto = tfQuantidadeProduto;
 		this.tfNomeTipoProduto = tfNomeTipoProduto;
+		this.lblExibeConsulta = lblExibeConsulta;
 	}
 
 
@@ -44,6 +46,12 @@ public class CadastroProdutoController implements ActionListener {
 		if (cmd.equals("Cadastrar")) {
 		    try {
 				cadastroProduto();
+			} catch (IOException e1) {
+				System.err.println(e1.getMessage());
+			}
+		} else if(cmd.equals("Consultar")) {
+			try {
+				buscar();
 			} catch (IOException e1) {
 				System.err.println(e1.getMessage());
 			}
@@ -91,8 +99,10 @@ public class CadastroProdutoController implements ActionListener {
 		produto.id = tfProdutoID.getText();
 		produto = buscarProduto(produto);
 		//implementar
-		if(produto.nome != null) {
-			//aqui
+		if(produto.id != null) {
+			lblExibeConsulta.setText("ID: " + produto.id + "; Nome: " + produto.nome);
+		} else {
+			lblExibeConsulta.setText("Produto não encontrado!");
 		}
 	}
 
@@ -107,11 +117,12 @@ public class CadastroProdutoController implements ActionListener {
 			while(linha != null) {
 				String[] vetLinha = linha.split(";");
 				if(vetLinha[0].equals(produto.id)) {
+					System.out.println("!!!");
 					produto.nome = vetLinha[1];
 					produto.valor = vetLinha[2];
 					produto.descricao = vetLinha[3];
-					produto.quantidadeEmEstoque = vetLinha[4];
-					produto.tipo = vetLinha[5];
+					//produto.quantidadeEmEstoque = vetLinha[4];
+					//produto.tipo = vetLinha[5];
 					break;
 				}
 				linha = buffer.readLine();

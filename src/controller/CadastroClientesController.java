@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import model.Cliente;
@@ -24,10 +25,13 @@ public class CadastroClientesController implements ActionListener{
 	private JTextField tfLogradouroPF;
 	private JTextField tfNumeroPortaPF;
 	private JTextField tfComplementoPF;
+	private JLabel lblExibeConsulta;
+	private JLabel lblExibeErroCadastro_1;
 	
 	//construtor
 	public CadastroClientesController(JTextField tfClienteNomePF, JTextField tfCpfPF, JTextField tfTelefonePF,
-			JTextField tfCepPF, JTextField tfLogradouroPF, JTextField tfNumeroPortaPF, JTextField tfComplementoPF) {
+			JTextField tfCepPF, JTextField tfLogradouroPF, JTextField tfNumeroPortaPF, JTextField tfComplementoPF,
+			JLabel lblExibeConsulta) {
 		super();
 		this.tfClienteNomePF = tfClienteNomePF;
 		this.tfCpfPF = tfCpfPF;
@@ -36,6 +40,7 @@ public class CadastroClientesController implements ActionListener{
 		this.tfLogradouroPF = tfLogradouroPF;
 		this.tfNumeroPortaPF = tfNumeroPortaPF;
 		this.tfComplementoPF = tfComplementoPF;
+		this.lblExibeConsulta = lblExibeConsulta;
 	}
 	
 	@Override
@@ -47,6 +52,12 @@ public class CadastroClientesController implements ActionListener{
 		if (cmd.equals("Cadastrar")) {
 			try {
 				cadastroCliente();
+			} catch (IOException e1) {
+				System.err.println(e1.getMessage());
+			}
+		} else if(cmd.equals("Consultar")) {
+			try {
+				buscar();
 			} catch (IOException e1) {
 				System.err.println(e1.getMessage());
 			}
@@ -66,6 +77,15 @@ public class CadastroClientesController implements ActionListener{
 		c.logradouro = tfLogradouroPF.getText();
 		c.numeroPorta = tfNumeroPortaPF.getText();
 		c.complemento = tfComplementoPF.getText();
+		
+		int controller = 0;
+		if(c.cpf.equals(null) || c.telefone.equals(null) || c.cep.equals(null) || c.nome.equals(null) || c.logradouro.equals(null) || c.numeroPorta.equals(null)) {
+			lblExibeErroCadastro_1.setText("*Preencher todos os campos obrigatórios");;
+		} else if(c.complemento.equals(null)) {
+			c.complemento = " ";
+		} else {
+			controller = 9;
+		}
 		
 		System.out.println(c);
 		gravarDados(c.toString());
@@ -98,12 +118,15 @@ public class CadastroClientesController implements ActionListener{
 	}
 	
 	private void buscar() throws IOException {
+		System.out.println("chegou");
 		Cliente cliente = new Cliente();
 		cliente.cpf = tfCpfPF.getText();
 		cliente = buscarCliente(cliente);
 		//implementar
 		if(cliente.nome != null) {
-			//aqui
+			lblExibeConsulta.setText("CPF: " + cliente.cpf + "; Nome: " + cliente.nome);
+		} else {
+			lblExibeConsulta.setText("Cliente não encontrado!");
 		}
 	}
 
@@ -117,8 +140,8 @@ public class CadastroClientesController implements ActionListener{
 			String linha = buffer.readLine();
 			while(linha != null) {
 				String[] vetLinha = linha.split(";");
-				if(vetLinha[1].equals(cliente.cpf)) {
-					cliente.nome = vetLinha[0];
+				if(vetLinha[0].equals(cliente.cpf)) {
+					cliente.nome = vetLinha[1];
 					cliente.telefone = vetLinha[2];
 					cliente.cep = vetLinha[3];
 					cliente.logradouro = vetLinha[4];
@@ -134,7 +157,5 @@ public class CadastroClientesController implements ActionListener{
 		}
 		return cliente;
 	}
-	
-	
 	
 }
