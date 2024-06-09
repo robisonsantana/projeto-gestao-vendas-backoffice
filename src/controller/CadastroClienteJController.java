@@ -30,11 +30,12 @@ public class CadastroClienteJController implements ActionListener{
 	private JTextField tfComplementoPJ;
 	private JTextField tfConsultaClientePJ;
 	private JLabel lblExibeConsulta;
+	private JLabel lblExibeErroCadastro_1;
 	
 	//construtor
 	public CadastroClienteJController(JTextField tfClienteNomePJ, JTextField tfCnpjPJ, JTextField tfTelefonePJ,
 			JTextField tfEmail, JTextField tfLogradouroPJ, JTextField tfCepPJ, JTextField tfNumeroPortaPJ,
-			JTextField tfComplementoPJ, JTextField tfConsultaClientePJ, JLabel lblExibeConsulta) {
+			JTextField tfComplementoPJ, JTextField tfConsultaClientePJ, JLabel lblExibeConsulta, JLabel lblExibeErroCadastro_1) {
 		super();
 		this.tfClienteNomePJ = tfClienteNomePJ;
 		this.tfCnpjPJ = tfCnpjPJ;
@@ -46,6 +47,7 @@ public class CadastroClienteJController implements ActionListener{
 		this.tfComplementoPJ = tfComplementoPJ;
 		this.tfConsultaClientePJ =  tfConsultaClientePJ;
 		this.lblExibeConsulta = lblExibeConsulta;
+		this.lblExibeErroCadastro_1 = lblExibeErroCadastro_1;
 	}
 
 	@Override
@@ -85,13 +87,13 @@ public class CadastroClienteJController implements ActionListener{
 			cj.numeroPorta = tfNumeroPortaPJ.getText();
 			cj.complemento = tfComplementoPJ.getText();
 			cj.email = tfEmail.getText();
-			if(cj.cnpj.equals(null) || cj.cep.equals(null) || cj.email.equals(null) || cj.logradouro.equals(null) || cj.nome.equals(null) || cj.numeroPorta.equals(null)) {
-				//mensagem de erro
-			} else if(cj.complemento.equals(null)) {
-				cj.complemento = " ";
-			} else {
-				controller = 9;
-			}
+//			if(cj.cnpj.equals(null) || cj.cep.equals(null) || cj.email.equals(null) || cj.logradouro.equals(null) || cj.nome.equals(null) || cj.numeroPorta.equals(null)) {
+//				lblExibeErroCadastro_1.setText("*Preencher todos os campos obrigatórios");;
+//			} else if(cj.complemento.equals(null)) {
+//				cj.complemento = " ";
+//			} else {
+//				controller = 9;
+//			}
 			
 		}
 		
@@ -130,10 +132,9 @@ public class CadastroClienteJController implements ActionListener{
 		ClienteJuridico cj = new ClienteJuridico();
 		cj.cnpj = tfConsultaClientePJ.getText();
 		cj = buscarCliente(cj);
-		System.out.println(cj.cnpj);
 		//implementar
 		if(cj.nome != null) {
-			lblExibeConsulta.setText("CNPJ: " + cj.cnpj + "; Nome: " + cj.nome);
+			lblExibeConsulta.setText("CNPJ: " + cj.cnpj + "; Nome: " + cj.nome + "; Telefone: " + cj.telefone + "; Email: " + cj.email + "; Logradouro: " + cj.logradouro + "; CEP: " + cj.cep + "; Nº: " + cj.numeroPorta + "; Complemento: " + cj.complemento);
 		} else {
 			lblExibeConsulta.setText("Cliente não encontrado!");
 		}
@@ -156,7 +157,7 @@ public class CadastroClienteJController implements ActionListener{
 					cj.logradouro = vetLinha[4];
 					cj.cep = vetLinha[5];
 					cj.numeroPorta = vetLinha[6];
-					cj.complemento = vetLinha[7];
+					//cj.complemento = vetLinha[7];
 					break;
 				}
 				linha = buffer.readLine();
