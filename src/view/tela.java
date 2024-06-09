@@ -493,7 +493,7 @@ public class tela extends JFrame {
 		tabClientesPF.add(lblExibeErroCadastro_1);
 		
 		//adicionando funcionalidade dos botoes dos controllers
-		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto, lblExibeConsulta);
+		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto, lblExibeConsulta, lblConsultaTipoProduto, comboBox);
 		btnCadastrarProduto.addActionListener(cadastropCont);
 		btnConsultarProduto.addActionListener(cadastropCont);
 				
