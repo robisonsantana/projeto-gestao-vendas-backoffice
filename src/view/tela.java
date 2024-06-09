@@ -476,20 +476,22 @@ public class tela extends JFrame {
 		lblExibeConsulta.setBounds(10, 243, 564, 143);
 		tabConsulta.add(lblExibeConsulta);
 		
-		//adicionando funcionalidade dos botoes dos controllers
-		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto );
-		btnCadastrarProduto.addActionListener(cadastropCont);
-				
-		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF);
-		
-		JLabel lblExibeErroCadastro_1 = new JLabel();
+		lblExibeErroCadastro_1 = new JLabel();
 		lblExibeErroCadastro_1.setForeground(new Color(255, 0, 0));
 		lblExibeErroCadastro_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblExibeErroCadastro_1.setBounds(27, 0, 564, 57);
 		tabClientesPF.add(lblExibeErroCadastro_1);
-		btnCadastrarClientePF.addActionListener(cadastrocCont);
+		
+		//adicionando funcionalidade dos botoes dos controllers
+		CadastroProdutoController cadastropCont = new CadastroProdutoController(tfNomeProduto, tfProdutoID,  tfValorProduto, tfQuantidadeProduto, tfNomeTipoProduto, lblExibeConsulta);
+		btnCadastrarProduto.addActionListener(cadastropCont);
+		btnConsultarProduto.addActionListener(cadastropCont);
 				
-		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ, tfConsultaClientePJ, lblExibeConsulta);
+		CadastroClientesController cadastrocCont = new CadastroClientesController(tfClienteNomePF, tfCpfPF, tfTelefonePF, tfCepPF, tfLogradouroPF, tfNumeroPortaPF, tfComplementoPF, lblExibeConsulta);
+		btnCadastrarClientePF.addActionListener(cadastrocCont);
+		btnConsultarClientePF.addActionListener(cadastrocCont);
+				
+		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ, tfConsultaClientePJ, lblExibeConsulta, lblExibeErroCadastro_1);
 		btnCadastrarClientePJ.addActionListener(cadastrocjCont);
 		btnConsultarClientePJ.addActionListener(cadastrocjCont);
 		
