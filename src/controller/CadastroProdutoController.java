@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
@@ -24,11 +25,13 @@ public class CadastroProdutoController implements ActionListener {
 	private JTextField tfValorProduto;
 	private JTextField tfQuantidadeProduto;
 	private JTextField tfNomeTipoProduto;
+	private JLabel lblTipoProduto;
 	private JLabel lblExibeConsulta;
+	private JComboBox comboBox;
 	
 	//construtor
 	public CadastroProdutoController(JTextField tfNomeProduto, JTextField tfProdutoID, JTextField tfValorProduto,
-			JTextField tfQuantidadeProduto, JTextField tfNomeTipoProduto, JLabel lblExibeConsulta) {
+			JTextField tfQuantidadeProduto, JTextField tfNomeTipoProduto, JLabel lblExibeConsulta, JLabel lblTipoProduto, JComboBox comboBox) {
 		super();
 		this.tfNomeProduto = tfNomeProduto;
 		this.tfProdutoID = tfProdutoID;
@@ -36,6 +39,7 @@ public class CadastroProdutoController implements ActionListener {
 		this.tfQuantidadeProduto = tfQuantidadeProduto;
 		this.tfNomeTipoProduto = tfNomeTipoProduto;
 		this.lblExibeConsulta = lblExibeConsulta;
+		this.comboBox = comboBox;
 	}
 
 
@@ -65,14 +69,15 @@ public class CadastroProdutoController implements ActionListener {
 		p.nome = tfNomeProduto.getText();
 		p.valor = tfValorProduto.getText();
 		p.quantidadeEmEstoque = tfQuantidadeProduto.getText();		
-		p.tipo = tfNomeTipoProduto.getText();
+		p.tipo = comboBox.getToolTipText();
+		
 		System.out.println(p);
 		gravarDados(p.toString());
 		tfProdutoID.setText("");
 		tfNomeProduto.setText("");
 		tfValorProduto.setText("");
 		tfQuantidadeProduto.setText("");		
-		tfNomeTipoProduto.setText("");
+		comboBox.setToolTipText("");
 	}
 	
 	private void gravarDados(String csvProdutos) throws IOException {
