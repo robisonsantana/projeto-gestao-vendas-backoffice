@@ -25,6 +25,16 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextPane;
 import java.awt.Color;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollBar;
+import javax.swing.JMenuItem;
+import java.awt.Choice;
+import javax.swing.JFormattedTextField;
+import javax.swing.JEditorPane;
+import javax.swing.JProgressBar;
+import java.awt.List;
+import javax.swing.JMenu;
 
 public class tela extends JFrame {
 
@@ -73,7 +83,7 @@ public class tela extends JFrame {
 	public tela() {
 		setTitle("Sistema Backoffice");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 640, 480);
+		setBounds(100, 100, 637, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -492,6 +502,24 @@ public class tela extends JFrame {
 		btnConsultarClientePF.addActionListener(cadastrocCont);
 				
 		CadastroClienteJController cadastrocjCont = new CadastroClienteJController(tfClienteNomePJ, tfCnpjPJ, tfTelefonePJ, tfEmail, tfLogradouroPJ, tfCepPJ, tfNumeroPortaPJ, tfComplementoPJ, tfConsultaClientePJ, lblExibeConsulta, lblExibeErroCadastro_1);
+		
+		JPanel tabCarrinho = new JPanel();
+		tabbedPane.addTab("Carrinho de compras", null, tabCarrinho, "Adicionar produtos ao carrinho");
+		tabCarrinho.setLayout(null);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(37, 58, 17, 285);
+		tabCarrinho.add(scrollBar);
+		
+		JLabel lblCarinho = new JLabel("Adicionar produtos ao carrinho de compras");
+		lblCarinho.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCarinho.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCarinho.setBounds(27, 10, 544, 16);
+		tabCarrinho.add(lblCarinho);
+		
+		JList list = new JList();
+		list.setBounds(27, 52, 517, 312);
+		tabCarrinho.add(list);
 		btnCadastrarClientePJ.addActionListener(cadastrocjCont);
 		btnConsultarClientePJ.addActionListener(cadastrocjCont);
 		
