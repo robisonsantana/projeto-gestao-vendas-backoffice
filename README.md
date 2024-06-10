@@ -5,6 +5,9 @@
 
 Este projeto consiste na implementação de um sistema de Backoffice para uma empresa, permitindo o cadastro, exclusão e consulta de tipos de produtos, produtos e clientes. Além disso, o sistema permite que os clientes montem carrinhos de compras, realizem o checkout e registrem suas compras. As informações são armazenadas e manipuladas utilizando estruturas de dados adequadas e os dados são persistidos em arquivos CSV.
 
+## Acesso para o Diagrama de Classes do sistema
+[Diagrama de Classe](https://drive.google.com/file/d/1h026CM-OJxYYig2nhxL-gw0Iz1lLhpLJ/view?usp=sharing)
+
 ## Passos para Execução do Projeto
 
 1. **Análise dos Requisitos**:
